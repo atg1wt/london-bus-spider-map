@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+Demo HTML Page for London Bus Spider Map
+@version 2022.09.26.01
+@author Tyrone C.
+@copyright © 2022 by the author
+@license MIT
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>London Bus Spider Map</title>
+<link rel="icon" href="data:image/x-icon;base64,AA">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+	integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+	crossorigin=""/>
+<link rel="stylesheet" href="SpiderMap.css">
+<link rel="stylesheet" href="StatusMessagePopup.css">
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+	integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+	crossorigin=""></script>
+<script src="StatusMessagePopup.js" defer></script>
+<script src="RestClient.js" defer></script>
+<script src="SpiderMap.js" defer></script>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+main {
+	width: 100vw;
+	height: 100vh;
+}
+</style>
+</head>
+<body>
+<main id='map'></main>
+
+<script>
+
+// Bodge for mobile browsers that have viewport height problems
+function fixViewportSize() {
+	const agent = navigator.userAgent;
+	const android = (agent.indexOf("Android") > -1);
+	const iphone = (agent.indexOf("iPhone") > -1);
+	const ipad = (agent.indexOf("iPad") > -1);
+	const firefox = (agent.indexOf("Firefox") > -1);
+	if ((android && !firefox) || iphone || ipad) {
+		const ht = window.innerHeight;
+		document.getElementById('map').style.height = ht + 'px';
+	}
+}
+
+var busMap;
+
+function init() {
+	busMap = new SpiderMap({
+		mapElement: document.getElementById('map'),
+		statusMessageManager: new StatusMessagePopup()
+	});
+}
+
+window.addEventListener('load', init);
+window.addEventListener('resize', fixViewportSize);
+
+</script>
+
+</body>
+</html>

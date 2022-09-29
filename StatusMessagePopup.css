@@ -1,0 +1,40 @@
+/**
+ * CSS for StatusMessagePopup class
+ * @version 2022.09.26.01
+ * @author Tyrone C.
+ * @copyright © 2022 by the author
+ * @license MIT
+ */
+
+.st_container {
+	position: fixed;
+	bottom: 8px;
+	right: 8px;
+	padding: 0;
+	margin: 0;
+	z-index: 99999;
+}
+
+.st_div {
+	padding: 0;
+	margin: 0;
+	font-size: 0;
+}
+
+.st_outerspan {
+	padding: 0;
+	border: 0;
+	margin: 0;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.st_innerspan {
+	padding: 1px 3px;
+	border: 1px solid #885;
+	margin: 2px 0;
+	background-color: #FFA;
+	color: #222;
+	font-size: 9pt;
+	display: inline-block;
+}
